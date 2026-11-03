@@ -4,7 +4,7 @@ build-backend = "poetry.core.masonry.api"
 
 [tool.poetry]
 name = "llamba"
-version = "0.1.12"
+version = "0.1.13"
 description = "A library to merge BioAge models with LLMs!"
 readme = "README.md"
 authors = [
@@ -26,7 +26,13 @@ omegaconf = "*"
 scikit-learn = "1.5.2"
 openpyxl = "3.1.5"
 requests = "^2.32.5"
-qdrant-client = "^1.16.1"
+qdrant-client = {version = "^1.16.1", extras = ["fastembed"]}
+llamba-library = {git = "git@github.com:SermanVS/llamba_library.git", rev = "stage2"}
+
+[[tool.poetry.source]]
+name = "torch"
+url = "https://download.pytorch.org/whl/cpu"
+priority = "supplemental"
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^8.3.3"

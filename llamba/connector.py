@@ -8,7 +8,7 @@ from llamba_library.bioage_model import BioAgeModel
 from llamba.util.disease import inflammatory_disease_list
 from llamba.util.clock import Clock
 from llamba.util.condition import Condition
-from llamba.util.document_repo import IDocumentRepo
+from llamba.util.document_repo import DocumentRepoQdrant
 
 
 class LlambaConnector:
@@ -18,12 +18,12 @@ class LlambaConnector:
         self.answer = ""
         self.clock = ""
         self.language = kwargs.get('language', "en")
-        self.document_repo: IDocumentRepo | None = None
+        self.document_repo: DocumentRepoQdrant | None = None
 
     def specify_clock_name(self, name: str, doi: str):
         self.clock = Clock(name, doi)
     
-    def specify_db(self, document_repo: IDocumentRepo):
+    def specify_db(self, document_repo: DocumentRepoQdrant):
         self.document_repo = document_repo
 
     def specify_conditions(self, condition: str, duration: str):
